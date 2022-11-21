@@ -1,11 +1,11 @@
 import { Component } from "react";
-import PersonalInfoForm from "./components/PersonalInfoForm"
+import FormController from "./components/FormController"
 import "./index.css"
 
 export class App extends Component {
   render() {
     return (
-      <PersonalInfoForm />
+      <FormController />
     );
   }
 }
