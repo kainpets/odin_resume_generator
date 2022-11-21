@@ -11,7 +11,7 @@ export class PersonalInfoForm extends Component {
   };
 
   render() {
-    const { values, handleChange } = this.props;
+    const { handleChange } = this.props;
 
     return (
       <>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PersonalInfoForm from "./PersonalInfoForm";
+import EducationInfoForm from "./EducationInfoForm";
 
 export class FormController extends Component {
   state = {
@@ -9,6 +10,10 @@ export class FormController extends Component {
     email: "",
     phoneNumber: "",
     city: "",
+    university: "",
+    degree: "",
+    educationStart: "",
+    educationEnd: "",
   };
 
   // Proceed to next step
@@ -35,7 +40,6 @@ export class FormController extends Component {
   render() {
     const { step } = this.state;
     const { firstName, lastName, email, phoneNumber, city } = this.state;
-    const values = { firstName, lastName, email, phoneNumber, city };
 
     switch (step) {
       case 1:
@@ -43,11 +47,16 @@ export class FormController extends Component {
           <PersonalInfoForm
             nextStep={this.nextStep}
             handleChange={this.handleChange}
-            values={values}
           />
         );
       case 2:
-        return <h1>Hello</h1>;
+        return (
+          <EducationInfoForm
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            handleChange={this.handleChange}
+          />
+        );
       case 3:
         return <h1>Hello</h1>;
       case 4:
