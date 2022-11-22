@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PersonalInfoForm from "./PersonalInfoForm";
 import EducationInfoForm from "./EducationInfoForm";
 import ExperienceInfoForm from "./ExperienceInfoForm";
+import Success from "./Success"
 
 export class FormController extends Component {
   state = {
@@ -41,6 +42,7 @@ export class FormController extends Component {
   render() {
     const { step } = this.state;
     const { firstName, lastName, email, phoneNumber, city, university, degree, educationStart, educationEnd, position, company, workStart, workEnd } = this.state;
+    const values = this.state;
 
     switch (step) {
       case 1:
@@ -67,7 +69,12 @@ export class FormController extends Component {
           />
         )
       case 4:
-        return <h1>Hello</h1>;
+        return (
+          <Success 
+            prevStep={this.prevStep}
+            values={values}
+          />
+        );
     }
 
     return <div>FormController</div>;
