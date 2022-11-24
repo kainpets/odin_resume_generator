@@ -13,8 +13,8 @@ npm install
 npm run dev
 ```
 
-## Built with 
+## Built with
 
-[React] (https://reactjs.org/)
-[MaterialUI] (https://mui.com/)
-[react-to-print] (https://www.npmjs.com/package/react-to-print)
+- [React] (https://reactjs.org/)
+- [MaterialUI] (https://mui.com/)
+- [react-to-print] (https://www.npmjs.com/package/react-to-print)

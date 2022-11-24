@@ -41,7 +41,6 @@ export class FormController extends Component {
 
   render() {
     const { step } = this.state;
-    const { firstName, lastName, email, phoneNumber, city, university, degree, educationStart, educationEnd, position, company, workStart, workEnd } = this.state;
     const values = this.state;
 
     switch (step) {
