@@ -7,6 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import ReactToPrint from "react-to-print";
 
 export class Success extends Component {
   back = (e) => {
@@ -19,7 +20,7 @@ export class Success extends Component {
 
     return (
       <>
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} ref={el => (this.componentRef = el)}>
           <Table>
             <TableHead>
               <TableRow>
@@ -80,6 +81,14 @@ export class Success extends Component {
         </TableContainer>
         <Button variant="outlined" label="Back" onClick={this.back}>
           Back
+        </Button>
+        <Button variant="outlined" label="Print">
+          <ReactToPrint 
+            trigger={() => {
+            return <a href="#">PRINT</a>;
+            }}
+            content={() => this.componentRef}/>
+
         </Button>
       </>
     );
