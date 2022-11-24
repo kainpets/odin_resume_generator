@@ -11,7 +11,7 @@ export class PersonalInfoForm extends Component {
   };
 
   render() {
-    const { handleChange } = this.props;
+    const { handleChange, handlePhotoUpload } = this.props;
 
     return (
       <>
@@ -53,6 +53,14 @@ export class PersonalInfoForm extends Component {
           label="City"
           variant="outlined"
           onChange={handleChange("city")}
+        />
+        <br />
+        <TextField
+          id="photo"
+          label="Your Photo"
+          variant="outlined"
+          type="file"
+          onChange={handlePhotoUpload("photo")}
         />
         <br />
         <Button variant="outlined" label="Continue" 

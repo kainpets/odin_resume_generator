@@ -12,6 +12,7 @@ export class FormController extends Component {
     email: "",
     phoneNumber: "",
     city: "",
+    photo: "",
     university: "",
     degree: "",
     educationStart: "",
@@ -39,6 +40,14 @@ export class FormController extends Component {
     this.setState({ [input]: e.target.value });
   };
 
+  // Handle photo upload
+
+  handlePhotoUpload = (input) => e => {
+    this.setState({ [input]: e.target.files[0]})
+  }
+
+  
+
   render() {
     const { step } = this.state;
     const values = this.state;
@@ -49,6 +58,7 @@ export class FormController extends Component {
           <PersonalInfoForm
             nextStep={this.nextStep}
             handleChange={this.handleChange}
+            handlePhotoUpload={this.handlePhotoUpload}
           />
         );
       case 2:

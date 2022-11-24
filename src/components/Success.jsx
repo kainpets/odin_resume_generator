@@ -7,6 +7,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 import ReactToPrint from "react-to-print";
 
 export class Success extends Component {
@@ -18,11 +20,27 @@ export class Success extends Component {
   render() {
     const resume = this.props.values;
 
+    console.log(resume.photo);
+
     return (
       <>
         <TableContainer component={Paper} ref={el => (this.componentRef = el)}>
           <Table>
             <TableHead>
+              <TableRow>
+                <TableCell>
+                <ImageList sx={{ width: 500, height: 450 }} cols={1} >
+        <ImageListItem>
+          <img
+            src={`${URL.createObjectURL(resume.photo)}`}
+            srcSet={`${resume.photo.name}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+            alt="resume-photo"
+            loading="lazy"
+          />
+        </ImageListItem>
+    </ImageList>
+                </TableCell>
+              </TableRow>
               <TableRow>
                 <TableCell>First Name</TableCell>
                 <TableCell>{resume.firstName}</TableCell>
