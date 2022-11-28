@@ -32,8 +32,7 @@ export class Success extends Component {
                 <ImageList sx={{ width: 500, height: 450 }} cols={1} >
         <ImageListItem>
           <img
-            src={`${URL.createObjectURL(resume.photo)}`}
-            srcSet={`${resume.photo.name}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+            src={URL.createObjectURL(resume.photo)}
             alt="resume-photo"
             loading="lazy"
           />
