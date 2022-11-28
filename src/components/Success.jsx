@@ -6,10 +6,11 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
 import ReactToPrint from "react-to-print";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 
 export class Success extends Component {
   back = (e) => {
@@ -20,25 +21,35 @@ export class Success extends Component {
   render() {
     const resume = this.props.values;
 
-    console.log(resume.photo);
-
     return (
       <>
-        <TableContainer component={Paper} ref={el => (this.componentRef = el)}>
+        <Typography variant="h2">{resume.firstName}</Typography>
+        <Typography variant="h2">{resume.lastName}</Typography>
+        <ImageList
+          sx={{
+            width: 1 / 2,
+            height: 400,
+            objectFit: "contain",
+            display: "inline-block",
+          }}
+        >
+          <ImageListItem>
+            <img
+              src={URL.createObjectURL(resume.photo)}
+              alt="resume-photo"
+              loading="lazy"
+            />
+          </ImageListItem>
+        </ImageList>
+
+        <TableContainer
+          component={Paper}
+          ref={(el) => (this.componentRef = el)}
+        >
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>
-                <ImageList sx={{ width: 500, height: 450 }} cols={1} >
-        <ImageListItem>
-          <img
-            src={URL.createObjectURL(resume.photo)}
-            alt="resume-photo"
-            loading="lazy"
-          />
-        </ImageListItem>
-    </ImageList>
-                </TableCell>
+                <TableCell></TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>First Name</TableCell>
@@ -100,12 +111,12 @@ export class Success extends Component {
           Back
         </Button>
         <Button variant="outlined" label="Print">
-          <ReactToPrint 
+          <ReactToPrint
             trigger={() => {
-            return <a href="#">PRINT</a>;
+              return <a href="#">PRINT</a>;
             }}
-            content={() => this.componentRef}/>
-
+            content={() => this.componentRef}
+          />
         </Button>
       </>
     );
