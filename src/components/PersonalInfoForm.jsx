@@ -57,7 +57,6 @@ export class PersonalInfoForm extends Component {
         <br />
         <TextField
           id="photo"
-          label="Your Photo"
           variant="outlined"
           type="file"
           onChange={handlePhotoUpload("photo")}
