@@ -2,7 +2,7 @@
 
 A React app that allows users to quickly generate a CV, print it or download it
 
-[Live Demo] TODO
+[Live Demo] https://kainpets.github.io/odin_resume_generator/
 
 ## Getting started
 
