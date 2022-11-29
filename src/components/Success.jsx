@@ -11,6 +11,8 @@ import ImageListItem from "@mui/material/ImageListItem";
 import ReactToPrint from "react-to-print";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
 
 export class Success extends Component {
   back = (e) => {
@@ -23,54 +25,43 @@ export class Success extends Component {
 
     return (
       <>
-        <Typography variant="h2">{resume.firstName}</Typography>
-        <Typography variant="h2">{resume.lastName}</Typography>
-        <ImageList
-          sx={{
-            width: 1 / 2,
-            height: 400,
-            objectFit: "contain",
-            display: "inline-block",
-          }}
-        >
-          <ImageListItem>
-            <img
-              src={URL.createObjectURL(resume.photo)}
-              alt="resume-photo"
-              loading="lazy"
-            />
-          </ImageListItem>
-        </ImageList>
-
-        <TableContainer
-          component={Paper}
-          ref={(el) => (this.componentRef = el)}
-        >
+      <TableContainer ref={(el) => (this.componentRef = el)} component={Paper}>
+        <Box  sx={{ flexGrow: 1 }}>
+          <Grid container spacing={1}>
+            <Grid item xs={8}>
+              <Typography variant="h2">{resume.firstName}</Typography>
+              <Typography variant="h2">{resume.lastName}</Typography>
+            </Grid>
+            <Grid item xs={4}>
+              <ImageList>
+                <ImageListItem>
+                  <img
+                    src={URL.createObjectURL(resume.photo)}
+                    alt="resume-photo"
+                    loading="lazy"
+                  />
+                </ImageListItem>
+              </ImageList>
+            </Grid>
+            <Grid item vs={4}>
+              <Typography variant="h6">
+                {resume.email}
+              </Typography>
+            </Grid>
+            <Grid item vs={4}>
+              <Typography variant="h6">
+                {resume.phoneNumber}
+              </Typography>
+            </Grid>
+            <Grid item vs={4}>
+              <Typography variant="h6">
+                {resume.city}
+              </Typography>
+            </Grid>
+          </Grid>
+        </Box>
           <Table>
             <TableHead>
-              <TableRow>
-                <TableCell></TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>First Name</TableCell>
-                <TableCell>{resume.firstName}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Last Name</TableCell>
-                <TableCell>{resume.lastName}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Email</TableCell>
-                <TableCell>{resume.email}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Phone Number</TableCell>
-                <TableCell>{resume.phoneNumber}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>City</TableCell>
-                <TableCell>{resume.city}</TableCell>
-              </TableRow>
               <TableRow>
                 <TableCell>University</TableCell>
                 <TableCell>{resume.university}</TableCell>
@@ -88,11 +79,11 @@ export class Success extends Component {
                 <TableCell>{resume.educationEnd}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>University</TableCell>
+                <TableCell>Position</TableCell>
                 <TableCell>{resume.position}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Degree</TableCell>
+                <TableCell>Company</TableCell>
                 <TableCell>{resume.company}</TableCell>
               </TableRow>
               <TableRow>
