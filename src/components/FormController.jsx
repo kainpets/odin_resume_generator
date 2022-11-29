@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PersonalInfoForm from "./PersonalInfoForm";
 import EducationInfoForm from "./EducationInfoForm";
 import ExperienceInfoForm from "./ExperienceInfoForm";
-import Success from "./Success"
+import Success from "./Success";
 
 export class FormController extends Component {
   state = {
@@ -42,11 +42,27 @@ export class FormController extends Component {
 
   // Handle photo upload
 
-  handlePhotoUpload = (input) => e => {
-    this.setState({ [input]: e.target.files[0]})
-  }
+  handlePhotoUpload = (input) => (e) => {
+    this.setState({ [input]: e.target.files[0] });
+  };
 
-  
+  // Handle auto generate
+
+  handleAutoGenerate = () => {
+    this.setState({
+      step: 4,
+      firstName: "Paweł",
+      lastName: "Stępniak",
+      email: "pawelstepniak22@gmail.com",
+      phoneNumber: "663058517",
+      city: "Poznań",
+      photo: "./pawel.jpg",
+      university: "Adam Mickiewicz University",
+      degree: "Law",
+      educationStart: "2013",
+      educationEnd: "2018",
+    });
+  };
 
   render() {
     const { step } = this.state;
@@ -59,6 +75,7 @@ export class FormController extends Component {
             nextStep={this.nextStep}
             handleChange={this.handleChange}
             handlePhotoUpload={this.handlePhotoUpload}
+            handleAutoGenerate={this.handleAutoGenerate}
           />
         );
       case 2:
@@ -71,19 +88,14 @@ export class FormController extends Component {
         );
       case 3:
         return (
-          <ExperienceInfoForm 
+          <ExperienceInfoForm
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             handleChange={this.handleChange}
           />
-        )
-      case 4:
-        return (
-          <Success 
-            prevStep={this.prevStep}
-            values={values}
-          />
         );
+      case 4:
+        return <Success prevStep={this.prevStep} values={values} />;
     }
 
     return <div>FormController</div>;

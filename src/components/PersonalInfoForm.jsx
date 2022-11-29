@@ -10,6 +10,11 @@ export class PersonalInfoForm extends Component {
     this.props.nextStep();
   };
 
+  autoGenerate = (e) => {
+    e.preventDefault();
+    this.props.handleAutoGenerate();
+  }
+
   render() {
     const { handleChange, handlePhotoUpload } = this.props;
 
@@ -65,6 +70,11 @@ export class PersonalInfoForm extends Component {
         <Button variant="outlined" label="Continue" 
         onClick={this.continue}>
         Continue
+        </Button>
+        <br />
+        <Button variant="outlined" label="Auto Generate Content" 
+        onClick={this.autoGenerate}>
+        Auto Generate Content
         </Button>
       </>
     );
